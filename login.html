@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Swoop - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .button-login {
+            display: block;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .button-login:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h2>Login</h2>
+        <label for="loginUserId">User ID</label>
+        <input type="text" id="loginUserId">
+
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword">
+
+        <button type="submit" class="button-login" onclick="loginUser()">Login</button>
+    </div>
+    <script>
+    function loginUser() {
+        const userId = document.getElementById('loginUserId').value;
+        const password = document.getElementById('loginPassword').value;
+        // Here you can add logic to check user ID and password, and redirect upon successful login
+        alert("Login successful for User ID: " + userId);
+        // Redirect to the service booking page
+        window.location.href = "homepage.html";
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .service-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h2>Select a Service</h2>
+    <div class="service-container">
+        <div class="service-card" onclick="selectService('ac-repair.html')">
+            <h3>AC & Appliances</h3>
+            <p>Repair services for AC, TV, Fridge, etc.</p>
+        </div>
+        <div class="service-card" onclick="selectService('house-cleaning.html')">
+            <h3>House Cleaning</h3>
+            <p>1BHK, 2BHK, 3BHK, and Bathroom cleaning.</p>
+        </div>
+        <div class="service-card" onclick="selectService('vehicle-repair.html')">
+            <h3>Vehicle Repair</h3>
+            <p>2 Wheeler & 3 Wheeler repair.</p>
+        </div>
+        <div class="service-card" onclick="selectService('pickup-drop.html')">
+            <h3>Product Pickup & Drop</h3>
+            <p>Pickup and drop services for products.</p>
+        </div>
+    </div>
+
+    <script>
+        function selectService(servicePage) {
+            window.location.href = servicePage;
+        }
+    </script>
+</body>
+</html>

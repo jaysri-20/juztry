@@ -1,0 +1,107 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .booking-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .amount-box {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #e9ecef;
+            color: #333;
+        }
+
+        .button-confirm {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-form">
+        <h2>House Cleaning Booking</h2>
+        <label for="date">Date</label>
+        <input type="date" id="date">
+        <label for="slot">Slot Timing</label>
+            <select id="slot">
+                <option value="">--Select Slot--</option>
+                <option value="9-10">9:00 AM - 10:00 AM</option>
+                <option value="10-11">10:00 AM - 11:00 AM</option>
+                <option value="11-12">11:00 AM - 12:00 PM</option>
+                <option value="11-12">01:00 PM - 02:00 PM</option>
+                <option value="11-12">02:00 PM - 03:00 PM</option>
+                <option value="11-12">03:00 PM - 04:00 PM</option>
+                <option value="11-12">05:00 PM - 06:00 PM</option>
+                <option value="11-12">04:00 PM - 05:00 PM</option>
+                <option value="11-12">06:00 PM - 07:00 PM</option>
+            </select>
+
+        <label for="address">Address</label>
+        <input type="text" id="address" maxlength="100">
+
+        <label for="vendor">Vendor Selection</label>
+        <select id="vendor">
+            <option value="Vendor A">Vendor A</option>
+            <option value="Vendor B">Vendor B</option>
+            <option value="Vendor C">Vendor C</option>
+        </select>
+
+        <label>Amount</label>
+        <div class="amount-box">₹ 1500</div>
+
+        <button class="button-confirm" onclick="confirmBooking()">Confirm Booking</button>
+    </div>
+
+    <script>
+        function confirmBooking() {
+            const serviceId = Math.floor(Math.random() * 1000);
+            const vendorName = document.getElementById('vendor').value;
+            const dateSlot = document.getElementById('date').value;
+            alert("Service Booked successfully.\nService ID: " + serviceId + "\nVendor Name: " + vendorName + "\nDate/Slot: " + dateSlot);
+        }
+    </script>
+</body>
+</html>

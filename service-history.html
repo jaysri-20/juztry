@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Swoop - Service History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            margin: 0 5px;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pagination a.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h2>Service History</h2>
+    <table id="service-history">
+        <thead>
+            <tr>
+                <th>User/Customer_ID</th>
+                <th>User_Name</th>
+                <th>Service_ID</th>
+                <th>Date</th>
+                <th>Slot</th>
+                <th>Type of Service</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <a href="#" id="prev" onclick="prevPage()">&lt; Prev</a>
+        <a href="#" id="next" onclick="nextPage()">Next &gt;</a>
+    </div>
+
+    <script>
+        const data = [
+            { userId: '5003', userName: 'John', serviceId: '1001', date: '2024-08-01', slot: '9:00 AM - 10:00 AM', type: 'AC Repair', status: 'Completed' },
+            { userId: '5003', userName: 'Doe', serviceId: '1002', date: '2024-08-02', slot: '10:00 AM - 11:00 AM', type: 'Fridge Repair', status: 'Completed' },
+            { userId: '5003', userName: 'Joy', serviceId: '1003', date: '2024-08-03', slot: '11:00 AM - 12:00 PM', type: 'Washing Machine Repair', status: 'Completed' },
+            { userId: '5003', userName: 'ape', serviceId: '1004', date: '2024-08-04', slot: '12:00 PM - 1:00 PM', type: 'TV Repair', status: 'Completed' },
+            { userId: '5003', userName: 'ali', serviceId: '1005', date: '2024-08-05', slot: '9:00 AM - 10:00 AM', type: 'Bathroom Cleaning', status: 'Completed' },
+            { userId: '5003', userName: 'adhi', serviceId: '1006', date: '2024-08-06', slot: '10:00 AM - 11:00 AM', type: '2 Wheeler Repair', status: 'Completed' },
+            { userId: '5003', userName: 'bob', serviceId: '1007', date: '2024-08-07', slot: '11:00 AM - 12:00 PM', type: '3 Wheeler Repair', status: 'Completed' },
+            { userId: '5003', userName: 'alice', serviceId: '1008', date: '2024-08-08', slot: '12:00 PM - 1:00 PM', type: 'Product Pickup', status: 'Completed' }
+        ];
+
+        let currentPage = 1;
+        const rowsPerPage = 5;
+
+        function displayTablePage(page) {
+            const tbody = document.querySelector('#service-history tbody');
+            tbody.innerHTML = '';
+
+            const start = (page - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const paginatedItems = data.slice(start, end);
+
+            paginatedItems.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.userId}</td>
+                    <td>${item.userName}</td>
+                    <td>${item.serviceId}</td>
+                    <td>${item.date}</td>
+                    <td>${item.slot}</td>
+                    <td>${item.type}</td>
+                    <td>${item.status}</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            document.getElementById('prev').classList.toggle('disabled', page === 1);
+            document.getElementById('next').classList.toggle('disabled', end >= data.length);
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayTablePage(currentPage);
+            }
+        }
+
+        function nextPage() {
+            if (currentPage * rowsPerPage < data.length) {
+                currentPage++;
+                displayTablePage(currentPage);
+            }
+        }
+
+        displayTablePage(currentPage);
+    </script>
+</body>
+</html>
